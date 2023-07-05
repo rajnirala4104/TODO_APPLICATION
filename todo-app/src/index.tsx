@@ -8,6 +8,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <div className="max-w-[1370px] m-auto">
+      <App />
+    </div>
   </React.StrictMode>
 );

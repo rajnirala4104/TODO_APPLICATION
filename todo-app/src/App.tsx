@@ -1,14 +1,10 @@
 import React from "react";
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
+import { _ROUTER } from "./routes";
 
 function App() {
-  return (
-    <div className="App">
-      <div className="container">
-        <h1 className="text-red-600">This is Todo Application</h1>
-      </div>
-    </div>
-  );
+  return <RouterProvider router={_ROUTER} />;
 }
 
 export default App;
