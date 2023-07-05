@@ -4,7 +4,7 @@ import { TaskCard } from "./TaskCard";
 export const ShowAddedList = () => {
   return (
     <>
-      <div className="container my-2 flex flex-col lg:flex-row flex-wrap mx-auto lg:max-w-[70%]">
+      <div className="container my-6 flex flex-col lg:flex-row flex-wrap mx-auto lg:max-w-[70%]">
         <TaskCard />
         <TaskCard />
         <TaskCard />

@@ -7,7 +7,7 @@ export const Home = () => {
     <>
       <section className="min-h-[80vh]">
         <InputSection />
-        <hr />
+        <hr className="max-w-[65%] mx-auto" />
         <ShowAddedList />
       </section>
     </>
