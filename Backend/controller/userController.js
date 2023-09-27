@@ -11,13 +11,19 @@ const controllers = {
    },
 
    userInfo: (req, res) => {
-      console.log(req.params);
-
-      res.status(statusCode.OK).json({
-         user: {
-            name: req.params.userName,
-            tasks: [],
-         },
+      for (const userName of Users) {
+         if (req.params.userName === userName) {
+            res.status(statusCode.OK).json({
+               user: {
+                  name: req.params.userName,
+                  tasks: null,
+               },
+            });
+         }
+      }
+      return res.json({
+         message: "Oops!!",
+         data: null,
       });
    },
 };
