@@ -7,5 +7,5 @@ export const getLogedUsers = () => {
 }
 
 export const getUserTask = (userName: string) => {
-   return http.get(`${ENDPOINTS._USER}/${userName}`)
+   return http.get(`/api${ENDPOINTS._USER}/${userName}`)
 }

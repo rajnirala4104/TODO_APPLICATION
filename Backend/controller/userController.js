@@ -6,17 +6,17 @@ const controllers = {
    showUsers: (req, res) => {
       res.status(statusCode.OK).json({
          message: "Welcome to TODO-WEB-APPLICATION",
-         user: Users,
+         user: Object.keys(Users),
       });
    },
 
    userInfo: (req, res) => {
-      for (const userName of Users) {
+      for (const userName of Object.keys(Users)) {
          if (req.params.userName === userName) {
             return res.status(statusCode.OK).json({
                userInfos: {
                   name: req.params.userName,
-                  tasks: null,
+                  task: Users[userName],
                },
             });
          }
