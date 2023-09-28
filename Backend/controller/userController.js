@@ -13,8 +13,8 @@ const controllers = {
    userInfo: (req, res) => {
       for (const userName of Users) {
          if (req.params.userName === userName) {
-            res.status(statusCode.OK).json({
-               user: {
+            return res.status(statusCode.OK).json({
+               userInfos: {
                   name: req.params.userName,
                   tasks: null,
                },
