@@ -1,31 +1,39 @@
-const statusCode = require("http-status-codes");
+const { json } = require("express");
+const { StatusCodes } = require("http-status-codes");
 
-const { Users } = require("../data/users.json");
+// const { Users } = require("../data/users.json");
+const users = [
+   {
+      id: 1,
+      name: "admin",
+   },
+   {
+      id: 2,
+      name: "raj nirala",
+   },
+];
 
 const controllers = {
    showUsers: (req, res) => {
-      res.status(statusCode.OK).json({
-         message: "Welcome to TODO-WEB-APPLICATION",
-         user: Object.keys(Users),
-      });
-   },
-
-   userInfo: (req, res) => {
-      for (const userName of Object.keys(Users)) {
-         if (req.params.userName === userName) {
-            return res.status(statusCode.OK).json({
-               userInfos: {
-                  name: req.params.userName,
-                  task: Users[userName],
-               },
-            });
-         }
+      if (users) {
+         res.status(StatusCodes.OK).json({
+            message: "ok",
+            data: users.length === 0 ? null : users,
+         });
       }
-      return res.json({
-         message: "Oops!!",
-         data: null,
+   },
+   getUseById: (req, res) => {
+      const userId = parseInt(req.params.user_id);
+      res.status(StatusCodes.OK).json({
+         message: "ok",
+         data:
+            users.findIndex((user) => user.id === userId) === -1
+               ? null
+               : users.find((user) => user.id === userId),
       });
    },
+   createUser: (req, res) => {},
+   deleteUser: (req, res) => {},
 };
 
 module.exports = controllers;

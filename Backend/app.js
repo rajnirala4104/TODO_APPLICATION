@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
    next();
 });
 
-app.get("/api", controllers.showUsers);
-app.get("/api/user/:userName", controllers.userInfo);
+app.get("/api/users", controllers.showUsers);
+app.get("/api/user/:user_id", controllers.getUseById);
 
 module.exports = app;
