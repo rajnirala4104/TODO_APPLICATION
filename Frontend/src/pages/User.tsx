@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { getLogedUsers } from "../api/services";
 
 export const User = () => {
-   const [usersName, setUsersName] = useState<string[]>();
+   const [userInfo, setUserInfo] = useState<any[]>();
 
    useEffect(() => {
       (async () => {
          try {
             const response = await getLogedUsers();
-            setUsersName(response.data.data);
+            setUserInfo(response.data.data);
          } catch (e) {
             console.error(e);
          }
@@ -19,15 +19,9 @@ export const User = () => {
       <Fragment>
          <Suspense fallback="loading..">
             <div className="container flex flex-col my-4 justify-center items-center">
-               {usersName?.map((name, key) => (
-                  <Fragment key={key}>
-                     <Link
-                        className="text-2xl px-3 rounded-sm hover:bg-gray-200"
-                        to={name}
-                     >
-                        {name}
-                     </Link>
-                     <br />
+               {userInfo?.map((userSingleObjct, i) => (
+                  <Fragment key={i}>
+                     <Link to={userSingleObjct.id}>{userSingleObjct.name}</Link>
                   </Fragment>
                ))}
             </div>
