@@ -32,7 +32,22 @@ const controllers = {
                : users.find((user) => user.id === userId),
       });
    },
-   createUser: (req, res) => {},
+   createUser: (req, res) => {
+      const { id, name } = req.body;
+      const userExist = users.findIndex((user) => user.id === id);
+      if (userExist === -1) {
+         req.status(StatusCodes.BAD_REQUEST).json({
+            message: "user already exist",
+            data: null,
+         });
+      } else {
+         users.push({ id, name });
+         req.status(StatusCodes.ok).json({
+            id,
+            name,
+         });
+      }
+   },
    deleteUser: (req, res) => {},
 };
 

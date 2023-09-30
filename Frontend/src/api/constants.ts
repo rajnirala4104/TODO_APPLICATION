@@ -3,5 +3,5 @@ export const REQUEST_TIME = 3000
 
 export const ENDPOINTS = {
    _USRES: "/users",
-   _USER: "/user/:user_id"
+   _USER: "/user"
 }

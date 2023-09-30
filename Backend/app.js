@@ -4,6 +4,8 @@ const controllers = require("./controller/userController");
 
 const app = express();
 
+app.use(express.json());
+
 app.use(function (req, res, next) {
    res.header("Access-Control-Allow-Origin", "*");
    res.header(
@@ -19,5 +21,6 @@ app.use(function (req, res, next) {
 
 app.get("/api/users", controllers.showUsers);
 app.get("/api/user/:user_id", controllers.getUseById);
+app.post("/api/users", controllers.createUser);
 
 module.exports = app;

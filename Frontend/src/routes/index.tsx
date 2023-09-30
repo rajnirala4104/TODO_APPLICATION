@@ -11,7 +11,7 @@ export const _ROUTER = createBrowserRouter([
             element: <User />,
          },
          {
-            path: "/:userName",
+            path: "/user/:user_id",
             element: <Home />,
          },
       ],

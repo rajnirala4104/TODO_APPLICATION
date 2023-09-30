@@ -21,7 +21,7 @@ export const User = () => {
             <div className="container flex flex-col my-4 justify-center items-center">
                {userInfo?.map((userSingleObjct, i) => (
                   <Fragment key={i}>
-                     <Link to={userSingleObjct.id}>{userSingleObjct.name}</Link>
+                     <Link to={""}>{userSingleObjct.name}</Link>
                   </Fragment>
                ))}
             </div>

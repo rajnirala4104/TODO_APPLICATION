@@ -1,24 +1,16 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getUserTask } from "../api/services";
-import { TaskCard } from "./TaskCard";
+import { getUserById } from "../api/services";
 
 export const ShowAddedList = () => {
    const { user_id } = useParams();
-   const [task, setTask] = useState<any[]>();
+   console.log(user_id, typeof user_id);
    useEffect(() => {
       (async () => {
-         if (user_id) {
-            try {
-               const response = await getUserTask(user_id);
-               setTask(response.data.userInfos.task);
-            } catch (e) {
-               console.error("someting is wrong: ", e);
-            }
-         }
+         const response = await getUserById(user_id);
+         console.log(response.data);
       })();
    }, []);
-   //  console.log(task);
    return (
       <Fragment>
          <div className="container my-6 flex flex-col lg:flex-row flex-wrap mx-auto lg:max-w-[70%]">
