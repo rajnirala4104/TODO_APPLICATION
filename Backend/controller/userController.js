@@ -1,17 +1,7 @@
-const { json } = require("express");
 const { StatusCodes } = require("http-status-codes");
 
 // const { Users } = require("../data/users.json");
-const users = [
-   {
-      id: 1,
-      name: "admin",
-   },
-   {
-      id: 2,
-      name: "raj nirala",
-   },
-];
+const users = [];
 
 const controllers = {
    showUsers: (req, res) => {
@@ -34,15 +24,15 @@ const controllers = {
    },
    createUser: (req, res) => {
       const { id, name } = req.body;
-      const userExist = users.findIndex((user) => user.id === id);
-      if (userExist === -1) {
-         req.status(StatusCodes.BAD_REQUEST).json({
+      const userExist = users.find((user) => user.id === id);
+      if (userExist) {
+         res.status(StatusCodes.OK).json({
             message: "user already exist",
             data: null,
          });
       } else {
          users.push({ id, name });
-         req.status(StatusCodes.ok).json({
+         res.status(StatusCodes.CREATED).json({
             id,
             name,
          });
