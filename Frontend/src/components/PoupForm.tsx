@@ -2,7 +2,7 @@ import React, { Fragment, Suspense, useState } from "react";
 import { sendUserInfoToTheBackend } from "../api/services";
 
 interface Prop {
-   isPopupOnFunction: React.Dispatch<React.SetStateAction<boolean>>;
+   isPopupOnFunction: any;
 }
 
 export const PoupForm: React.FC<Prop> = ({ isPopupOnFunction }) => {
@@ -10,9 +10,8 @@ export const PoupForm: React.FC<Prop> = ({ isPopupOnFunction }) => {
    const [userName, setUserName] = useState<string>();
 
    const addHandler = async () => {
-      sendUserInfoToTheBackend(userId, userName);
+      await sendUserInfoToTheBackend(userId, userName);
       isPopupOnFunction(false);
-      window.location.reload();
    };
 
    return (

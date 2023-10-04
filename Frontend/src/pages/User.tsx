@@ -7,29 +7,33 @@ export const User = () => {
    const [userInfo, setUserInfo] = useState<any[]>();
    const [isPopupOn, setIsPopupOn] = useState<boolean>(false);
 
+   const toggalPopup = (value: boolean) => {
+      console.log("here..");
+      setIsPopupOn(value);
+      something();
+   };
+
+   const something = async () => {
+      try {
+         const response = await getLogedUsers();
+         setUserInfo(response.data.data);
+      } catch (e) {
+         console.error(e);
+      }
+   };
+
    useEffect(() => {
-      (async () => {
-         try {
-            const response = await getLogedUsers();
-            setUserInfo(response.data.data);
-         } catch (e) {
-            console.error(e);
-         }
-      })();
+      something();
    }, []);
    console.log(userInfo);
    return (
       <Fragment>
          <Suspense fallback="loading..">
             {isPopupOn ? (
-               <PoupForm isPopupOnFunction={setIsPopupOn} />
+               <PoupForm isPopupOnFunction={toggalPopup} />
             ) : (
                <div className="container flex flex-col my-4 justify-center items-center">
-                  {!userInfo ? (
-                     <h1 className="text-2xl text-red-600">
-                        !!! nobady loged here
-                     </h1>
-                  ) : (
+                  {userInfo ? (
                      userInfo?.map((userSingleObjct, i) => (
                         <Fragment key={i}>
                            <Link to={`/user/${userSingleObjct.id}`}>
@@ -37,6 +41,10 @@ export const User = () => {
                            </Link>
                         </Fragment>
                      ))
+                  ) : (
+                     <h1 className="text-2xl text-red-600">
+                        !!! nobady loged here
+                     </h1>
                   )}
 
                   <div className="btn">
