@@ -8,7 +8,6 @@ export const User = () => {
    const [isPopupOn, setIsPopupOn] = useState<boolean>(false);
 
    const toggalPopup = (value: boolean) => {
-      console.log("here..");
       setIsPopupOn(value);
       something();
    };
@@ -52,7 +51,7 @@ export const User = () => {
                         onClick={() => setIsPopupOn(!isPopupOn)}
                         className="py-2 px-4 bg-blue-400 rounded mt-10 hover:bg-blue-300"
                      >
-                        Add Mmember
+                        Add Member
                      </button>
                   </div>
                </div>

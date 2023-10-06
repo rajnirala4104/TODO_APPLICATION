@@ -1,6 +1,7 @@
 const express = require("express");
 
 const controllers = require("./controller/userController");
+const { taskController } = require("./controller/taskController");
 
 const app = express();
 
@@ -19,8 +20,11 @@ app.use(function (req, res, next) {
    next();
 });
 
+// ------------- users ------------
 app.get("/api/users", controllers.showUsers);
 app.get("/api/user/:user_id", controllers.getUseById);
 app.post("/api/users", controllers.createUser);
 
+// ----------------- task -------------
+app.get("/api/tasks", taskController.showTask);
 module.exports = app;
